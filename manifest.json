@@ -20,7 +20,14 @@
   ],
   "background": {
     "service_worker": "background.js",
+    "scripts": ["background.js"],
     "type": "module"
+  },
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "goojara-downloader@alfnitacoder",
+      "strict_min_version": "121.0"
+    }
   },
   "action": {
     "default_popup": "popup.html",

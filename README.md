@@ -9,10 +9,20 @@ All processing stays on-device. No external APIs or cloud servers.
 
 ## Install (developer mode)
 
-1. Open `chrome://extensions`
+### Chrome / Opera / Edge
+1. Open `chrome://extensions` (or `opera://extensions`)
 2. Enable **Developer mode**
 3. Click **Load unpacked** and select this folder
 4. Visit a Goojara page, click **Play**, then open the extension popup
+
+### Firefox
+1. Open `about:debugging#/runtime/this-firefox`
+2. Click **Load Temporary Add-on…**
+3. Select `manifest.json` in this folder  
+   (Temporary add-ons are removed when Firefox restarts.)
+4. Visit a Goojara page, click **Play**, then open the extension popup
+
+> The manifest includes both `background.service_worker` (Chromium) and `background.scripts` (Firefox).
 
 ## File structure
 
