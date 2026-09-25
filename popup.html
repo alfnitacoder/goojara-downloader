@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Goojara Downloader &amp; Shield</title>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <div class="shell">
+      <header class="header">
+        <div class="brand">
+          <div class="logo" aria-hidden="true"></div>
+          <div class="brand-text">
+            <h1>Goojara Downloader &amp; Shield</h1>
+            <p class="subtitle">Client-side · Privacy-first</p>
+          </div>
+        </div>
+        <div class="shield-pill" id="shieldPill" title="Shield status">
+          <span class="shield-dot" id="shieldDot"></span>
+          <span id="shieldLabel">Protected</span>
+        </div>
+      </header>
+
+      <section class="stats" id="statsRow">
+        <div class="stat">
+          <span class="stat-value" id="statPopups">0</span>
+          <span class="stat-label">Popups</span>
+        </div>
+        <div class="stat">
+          <span class="stat-value" id="statRedirects">0</span>
+          <span class="stat-label">Redirects</span>
+        </div>
+        <div class="stat">
+          <span class="stat-value" id="statAds">0</span>
+          <span class="stat-label">Ads</span>
+        </div>
+      </section>
+
+      <section class="progress-panel hidden" id="progressPanel">
+        <div class="progress-head">
+          <span id="progressStatus">Downloading…</span>
+          <button type="button" class="btn btn-ghost btn-sm" id="btnCancel">Cancel</button>
+        </div>
+        <div class="progress-track">
+          <div class="progress-fill" id="progressFill"></div>
+        </div>
+        <div class="progress-meta">
+          <span id="progressPercent">0%</span>
+          <span id="progressSize">0 MB</span>
+          <span id="progressSpeed">0 MB/s</span>
+          <span id="progressEta">—</span>
+        </div>
+      </section>
+
+      <section class="streams">
+        <div class="section-head">
+          <h2>Detected streams</h2>
+          <button type="button" class="btn btn-ghost btn-sm" id="btnRefresh" title="Rescan tab">
+            Rescan
+          </button>
+        </div>
+        <div id="streamList" class="stream-list">
+          <div class="empty" id="emptyState">
+            Play the video on Goojara, then rescan. Streams appear here automatically.
+          </div>
+        </div>
+      </section>
+
+      <section class="quality-panel hidden" id="qualityPanel">
+        <div class="section-head">
+          <h2>Select quality</h2>
+          <button type="button" class="btn btn-ghost btn-sm" id="btnQualityClose">Close</button>
+        </div>
+        <div id="qualityList" class="quality-list"></div>
+      </section>
+
+      <section class="settings">
+        <h2>Settings</h2>
+        <label class="toggle">
+          <input type="checkbox" id="toggleAdBlock" checked />
+          <span class="toggle-ui"></span>
+          <span class="toggle-label">Ad / popup / redirect blocker</span>
+        </label>
+        <label class="toggle">
+          <input type="checkbox" id="toggleAutoDetect" checked />
+          <span class="toggle-ui"></span>
+          <span class="toggle-label">Auto-detect streams</span>
+        </label>
+      </section>
+
+      <footer class="footer">
+        <span id="tabHint">Open a goojara.to tab to begin</span>
+      </footer>
+    </div>
+
+    <script type="module" src="popup.js"></script>
+  </body>
+</html>

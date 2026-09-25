@@ -1,0 +1,6 @@
+.DS_Store
+*.crx
+*.pem
+.chrome-extension-key/
+node_modules/
+_metadata/

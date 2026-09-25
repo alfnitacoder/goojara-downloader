@@ -1,0 +1,65 @@
+{
+  "manifest_version": 3,
+  "name": "Goojara Downloader & Shield",
+  "version": "1.0.0",
+  "description": "Client-side video stream detector/downloader and aggressive ad/popup/redirect shield for goojara.to. All processing stays on-device — no external APIs. Permissions: activeTab (inspect current tab), storage (persist streams/settings/download state), scripting (inject DOM scraper), downloads (save media), declarativeNetRequest (block ads/redirects), webRequest (observe media URLs only, never modify). Host access covers goojara domains plus media CDNs required to fetch HLS segments the player already loads.",
+  "permissions": [
+    "activeTab",
+    "storage",
+    "scripting",
+    "downloads",
+    "declarativeNetRequest",
+    "webRequest",
+    "tabs",
+    "alarms"
+  ],
+  "host_permissions": [
+    "*://goojara.to/*",
+    "*://*.goojara.to/*",
+    "*://*/*"
+  ],
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    },
+    "default_title": "Goojara Downloader & Shield"
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "content_scripts": [
+    {
+      "matches": ["*://goojara.to/*", "*://*.goojara.to/*"],
+      "js": ["content.js"],
+      "run_at": "document_start",
+      "all_frames": true
+    }
+  ],
+  "declarative_net_request": {
+    "rule_resources": [
+      {
+        "id": "ad_block_rules",
+        "enabled": true,
+        "path": "rules.json"
+      }
+    ]
+  },
+  "web_accessible_resources": [
+    {
+      "resources": ["injected/pageShield.js"],
+      "matches": ["*://goojara.to/*", "*://*.goojara.to/*"]
+    }
+  ],
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self'; base-uri 'none'; form-action 'none'"
+  }
+}
